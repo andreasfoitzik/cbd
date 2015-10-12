@@ -1,7 +1,8 @@
-package dash.applicationmanagement.resource;
+package dash.vendormanagement.resource;
 
-import dash.applicationmanagement.domain.Application;
+import dash.inquirermanagement.domain.Inquirer;
 import dash.usermanagement.domain.User;
+import dash.vendormanagement.domain.Vendor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -24,18 +24,19 @@ import java.util.concurrent.atomic.AtomicLong;
 @RequestMapping(value="/application",
         produces={MediaType.APPLICATION_JSON_VALUE},
         consumes = {MediaType.APPLICATION_JSON_VALUE})
-public class ApplicationResource {
+public class VendorResource {
 
-    public ApplicationResource() {
-        super();
-    }
+        public VendorResource() {
+            super();
+        }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Application>> get() {
+        @RequestMapping(method = RequestMethod.GET)
+        public ResponseEntity<List<Vendor>> get() {
 
-        List<Application> application = new ArrayList<Application>();
+            List<Vendor> vendors = new ArrayList<Vendor>();
 
-        application.add(new Application());
-        return new ResponseEntity<List<Application>>(application, HttpStatus.OK);
-    }
+            vendors.add(new Vendor());
+
+            return new ResponseEntity<List<Vendor>>(vendors, HttpStatus.OK);
+        }
 }
