@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="css/login.css">
+
+<div>
+    <form class="form-signin" ng-controller="LoginCtrl as login">
+        <script type="text/ng-template" id="wrongLogin">
+            <div class="bs-example" style="width:350px; margin:auto; align:center;">
+                <div class="alert alert-warning">
+                    <a href="" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Warning!</strong>
+                    <br/>
+                    Falscher Benutzername oder falsches Passwort!
+                </div>
+            </div>
+        </script>
+
+        <img src="img/Containerbasis.png" width="100%" />
+        <br/><br/>
+        
+        <h2 class="form-signin-heading" align="center"> <!-- Anfragen-Tool --></h2>
+        <br/><br/>
+        
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input class="form-control" ng-model="login.username" id="inputUsername" placeholder="Username" required autofocus>
+
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input class="form-control" ng-model="login.password" type="password" id="inputPassword" placeholder="Password" required>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login.login(login)">Sign in</button>
+    </form>
+
+</div>
