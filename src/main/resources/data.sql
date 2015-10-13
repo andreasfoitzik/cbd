@@ -1,0 +1,2 @@
+INSERT INTO User(firstname, lastname, username, email) VALUES ('Andreas', 'Foitzik', 'andreasfoitzik', 'andreas.foitzik@live.com')
+INSERT INTO User(firstname, lastname, username, email) VALUES ('Samuel', 'Ilg', 'samuelilg', 'samuel@clions.de')

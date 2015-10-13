@@ -20,7 +20,7 @@ import dash.usermanagement.domain.User;
  */
 @Component
 @RestController
-@RequestMapping(value="/application",
+@RequestMapping(value="/user",
         produces={MediaType.APPLICATION_JSON_VALUE},
         consumes = {MediaType.APPLICATION_JSON_VALUE})
 public class UserResource {
@@ -32,10 +32,11 @@ public class UserResource {
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<User>> get() {
 
-        List<Vendor> users = new ArrayList<Vendor>();
+        List<User> users = new ArrayList<User>();
 
-        users.add(new Vendor());
+        users.add(new User("Andreas","Foitzik","andreas.foitzik","andreas.foitzik@live.com"));
 
         return new ResponseEntity<List<User>>(users, HttpStatus.OK);
     }
+
 }
