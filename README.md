@@ -3,6 +3,6 @@
 
 Run configuration 
 
-./gradlew build
+1). gradlew build
 <br/>
-java -jar build/libs/cbd-0.1.0.jar
+2). java -jar build/libs/cbd-0.1.0.jar
