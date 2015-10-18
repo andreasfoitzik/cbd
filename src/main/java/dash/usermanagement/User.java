@@ -1,35 +1,34 @@
-package dash.usermanagement.domain;
+package dash.usermanagement;
 
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Table;
+import javax.persistence.Column;
 import javax.persistence.Id;
 
 /**
  * Created by Andreas on 09.10.2015.
  */
-@Component
 @Entity
+@Table(name="dash.usermanagement.User")
 public class User {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
+    @Column
     private String firstname;
+    @Column
     private String lastname;
+    @Column
     private String username;
+    @Column
     private String email;
 
-    protected User (){}
-
-    public User(String firstname, String lastname, String username, String email){
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.username = username;
-        this.email = email;
-    }
+    public User (){}
 
     public String getFirstname() {
         return firstname;
@@ -65,6 +64,6 @@ public class User {
 
     @Override
     public String toString(){
-        return "User: " + this.firstname + " " + this.lastname + " with Username " + this.username + " " + this.email;
+        return "dash.usermanagement.User: " + this.firstname + " " + this.lastname + " with Username " + this.username + " " + this.email;
     }
 }
