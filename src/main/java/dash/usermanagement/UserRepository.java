@@ -12,6 +12,4 @@ import org.springframework.stereotype.Repository;
 @Component
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
-
-    Page<User> findAll(Pageable pageable);
 }

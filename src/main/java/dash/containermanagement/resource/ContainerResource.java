@@ -18,22 +18,10 @@ import java.util.List;
  */
 @Component
 @RestController
-@RequestMapping(value="/application",
+@RequestMapping(value="/container",
         produces={MediaType.APPLICATION_JSON_VALUE},
         consumes = {MediaType.APPLICATION_JSON_VALUE})
 public class ContainerResource {
 
-    public ContainerResource() {
-        super();
-    }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Container>> get() {
-
-        List<Container> containers = new ArrayList<Container>();
-
-        containers.add(new Container());
-
-        return new ResponseEntity<List<Container>>(containers, HttpStatus.OK);
-    }
 }

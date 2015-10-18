@@ -13,7 +13,6 @@ import javax.persistence.Id;
  * Created by Andreas on 09.10.2015.
  */
 @Entity
-@Table(name="dash.usermanagement.User")
 public class User {
 
     @Id

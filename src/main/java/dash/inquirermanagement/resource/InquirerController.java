@@ -18,23 +18,10 @@ import java.util.List;
  */
 @Component
 @RestController
-@RequestMapping(value="/application",
+@RequestMapping(value="/inquirer",
         produces={MediaType.APPLICATION_JSON_VALUE},
         consumes = {MediaType.APPLICATION_JSON_VALUE})
 public class InquirerController {
 
-    public InquirerController() {
-        super();
-    }
-
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Inquirer>> get() {
-
-        List<Inquirer> inquirers = new ArrayList<Inquirer>();
-
-        inquirers.add(new Inquirer());
-
-        return new ResponseEntity<List<Inquirer>>(inquirers, HttpStatus.OK);
-    }
 }
 
