@@ -1,29 +1,27 @@
-package dash.usermanagement;
+package dash.inquirermanagement;
 
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Table;
-import javax.persistence.Column;
 import javax.persistence.Id;
 
 /**
- * Created by Andreas on 09.10.2015.
+ * Created by Andreas on 10.10.2015.
  */
 @Entity
-public class User {
+public class Inquirer {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
     private String firstname;
     private String lastname;
-    private String username;
+    private String company;
     private String email;
 
-    protected User (){}
+    protected Inquirer(){}
 
     public String getFirstname() {
         return firstname;
@@ -31,6 +29,14 @@ public class User {
 
     public void setFirstname(String firstname) {
         this.firstname = firstname;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public String getLastname() {
@@ -47,18 +53,5 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    @Override
-    public String toString(){
-        return "dash.usermanagement.User: " + this.firstname + " " + this.lastname + " with Username " + this.username + " " + this.email;
     }
 }

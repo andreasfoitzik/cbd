@@ -1,7 +1,6 @@
-package dash.usermanagement;
+package dash.vendormanagement;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import dash.usermanagement.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -10,6 +9,6 @@ import org.springframework.stereotype.Repository;
  * Created by Andreas on 12.10.2015.
  */
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface VendorRepository extends CrudRepository<Vendor, Long> {
 
 }

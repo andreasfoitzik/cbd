@@ -1,9 +1,20 @@
-package dash.applicationmanagement.domain;
+package dash.applicationmanagement;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Created by Andreas on 09.10.2015.
  */
+@Entity
 public class Application {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private long id;
+
     // Class - Inquirer
     private String firstname;
     private String lastname;
@@ -25,7 +36,5 @@ public class Application {
     private String compareableProposal;
     private String message;
 
-    public Application(){
-
-    }
+    protected Application(){}
 }

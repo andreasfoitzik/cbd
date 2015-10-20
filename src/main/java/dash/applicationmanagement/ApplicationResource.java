@@ -1,6 +1,6 @@
-package dash.applicationmanagement.resource;
+package dash.applicationmanagement;
 
-import dash.applicationmanagement.domain.Application;
+import dash.applicationmanagement.Application;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +15,8 @@ import java.util.List;
 /**
  * Created by Andreas on 12.10.2015.
  */
-@Component
 @RestController
-@RequestMapping(value="/application",
-        produces={MediaType.APPLICATION_JSON_VALUE},
-        consumes = {MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping(value="/application")
 public class ApplicationResource {
 
     @RequestMapping(method = RequestMethod.GET)

@@ -1,17 +1,9 @@
-package dash.containermanagement.resource;
+package dash.containermanagement;
 
-import dash.containermanagement.domain.Container;
-import dash.inquirermanagement.domain.Inquirer;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Andreas on 12.10.2015.
