@@ -1,9 +1,11 @@
 package dash.applicationmanagement;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import dash.containermanagement.Container;
+import dash.inquirermanagement.Inquirer;
+import dash.vendormanagement.Vendor;
+
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Andreas on 09.10.2015.
@@ -15,20 +17,12 @@ public class Application {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
 
-    // Class - Inquirer
-    private String firstname;
-    private String lastname;
-    private String company;
-    private String email;
-
-    // Class - vendor
-    private String vendor;
-    private String phone;
-
-    // Class - container
-    private String container;
-    private String containerId;
-    private String containerName;
+    @OneToOne
+    private Inquirer inquirer;
+    @OneToOne
+    private Vendor vendor;
+    @OneToMany
+    private List<Container> container;
 
     private String containerAmount;
     private boolean transport;
@@ -37,4 +31,68 @@ public class Application {
     private String message;
 
     protected Application(){}
+
+    public Inquirer getInquirer() {
+        return inquirer;
+    }
+
+    public void setInquirer(Inquirer inquirer) {
+        this.inquirer = inquirer;
+    }
+
+    public Vendor getVendor() {
+        return vendor;
+    }
+
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
+    }
+
+    public List<Container> getContainer() {
+        return container;
+    }
+
+    public void setContainer(List<Container> container) {
+        this.container = container;
+    }
+
+    public String getContainerAmount() {
+        return containerAmount;
+    }
+
+    public void setContainerAmount(String containerAmount) {
+        this.containerAmount = containerAmount;
+    }
+
+    public boolean isTransport() {
+        return transport;
+    }
+
+    public void setTransport(boolean transport) {
+        this.transport = transport;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public String getCompareableProposal() {
+        return compareableProposal;
+    }
+
+    public void setCompareableProposal(String compareableProposal) {
+        this.compareableProposal = compareableProposal;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

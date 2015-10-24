@@ -3,6 +3,8 @@ package dash.usermanagement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -10,9 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -20,29 +20,53 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value="/user")
+@Api(value = "users", description = "User API")
 public class UserResource {
 
     @Autowired
     private UserRepository userRepository;
 
     @RequestMapping(method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
     public Iterable<User> get() {
-
-        User user = new User();
-        user.setFirstname("Andreas");
-        user.setLastname("Foitzik");
-        user.setUsername("andreasfoitzik");
-        user.setEmail("andreas.foitzik@live.com");
-        userRepository.save(user);
-
-        User user2 = new User();
-        user2.setFirstname("Andreas");
-        user2.setLastname("Foitzik");
-        user2.setUsername("andreasfoitzik");
-        user2.setEmail("andreas.foitzik@live.com");
-        userRepository.save(user2);
-
-
         return userRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET,
+                    value="{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public User findById(@PathVariable Long id) {
+        return userRepository.findOne(id);
+    }
+
+    @RequestMapping(method = RequestMethod.POST,
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<Void> add(@RequestBody User user) {
+        System.out.println(user);
+        userRepository.save(user);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @RequestMapping(method=RequestMethod.PUT,
+            value="{id}",
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public User update(@PathVariable Long id, @RequestBody User updateUser) {
+        User user = userRepository.findOne(id);
+        user.setFirstname(updateUser.getFirstname());
+        user.setLastname(updateUser.getLastname());
+        user.setUsername(updateUser.getUsername());
+        user.setEmail(updateUser.getEmail());
+        return user;
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ApiOperation(value = "Delete a single user.", notes = "You have to provide a valid user ID.")
+    public void delete(@PathVariable Long id) {
+        userRepository.delete(id);
     }
 }
