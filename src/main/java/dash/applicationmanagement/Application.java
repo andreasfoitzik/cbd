@@ -1,5 +1,6 @@
 package dash.applicationmanagement;
 
+import dash.Status;
 import dash.containermanagement.Container;
 import dash.inquirermanagement.Inquirer;
 import dash.vendormanagement.Vendor;
@@ -29,6 +30,7 @@ public class Application {
     private String destination;
     private String compareableProposal;
     private String message;
+    private Status status;
 
     protected Application(){}
 
@@ -94,5 +96,13 @@ public class Application {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

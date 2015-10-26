@@ -5,6 +5,8 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import dash.applicationmanagement.Application;
 import dash.containermanagement.Container;
 import dash.containermanagement.ContainerRepository;
+import dash.inquirermanagement.InquirerRepository;
+import dash.vendormanagement.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,6 +28,15 @@ public class ApplicationResource {
     @Autowired
     private ApplicationRepository applicationRepository;
 
+    @Autowired
+    private ContainerRepository containerRepository;
+
+    @Autowired
+    private InquirerRepository inquirerRepository;
+
+    @Autowired
+    private VendorRepository vendorRepository;
+
     @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public Iterable<Application> get() {
@@ -45,8 +56,9 @@ public class ApplicationResource {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Void> add(@RequestBody Application application) {
 
-
-
+        inquirerRepository.save(application.getInquirer());
+        vendorRepository.save(application.getVendor());
+        containerRepository.save(application.getContainer());
 
         applicationRepository.save(application);
         return new ResponseEntity<Void>(HttpStatus.OK);
