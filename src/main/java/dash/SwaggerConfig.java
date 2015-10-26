@@ -14,11 +14,12 @@ import static org.ajar.swaggermvcui.SwaggerSpringMvcUi.WEB_JAR_RESOURCE_PATTERNS
 import static org.ajar.swaggermvcui.SwaggerSpringMvcUi.WEB_JAR_RESOURCE_LOCATION;
 import static org.ajar.swaggermvcui.SwaggerSpringMvcUi.WEB_JAR_VIEW_RESOLVER_PREFIX;
 import static org.ajar.swaggermvcui.SwaggerSpringMvcUi.WEB_JAR_VIEW_RESOLVER_SUFFIX;
-
+/*
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.ak.swaggerspringmvc.shared.controller", "com.ak.spring3.music"})
 @EnableSwagger
+*/
 public class SwaggerConfig extends WebMvcConfigurerAdapter {
 
     @Override
@@ -30,7 +31,7 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
     @Bean
     public InternalResourceViewResolver getInternalResourceViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix(WEB_JAR_VIEW_RESOLVER_PREFIX);
+        resolver.setPrefix("api/"+WEB_JAR_VIEW_RESOLVER_PREFIX);
         resolver.setSuffix(WEB_JAR_VIEW_RESOLVER_SUFFIX);
         return resolver;
     }

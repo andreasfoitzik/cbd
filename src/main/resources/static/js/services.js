@@ -5,65 +5,65 @@
 
 angular.module('app.services', ['ngResource']);
 
-    app.service('dashboard', ['$resource', function($resource){
-        return $resource('/dashboard', {}, {
-            query:  {method:'GET', isArray:true},
-            save:   {method:'POST', isArray:true},
-            update: {method:'PUT', isArray:true},
-            remove: {method:'DELETE', isArray:true}
-        });
-    }]);
-
-    app.service('user', ['$resource', function($resource){
-        return $resource('/user', {}, {
-            query:  {method:'GET', isArray:true},
-            save:   {method:'POST', isArray:true},
-            update: {method:'PUT', isArray:true},
-            remove: {method:'DELETE', isArray:true}
-        });
-    }]);
-
     app.service('login', ['$resource', function($resource){
         return $resource('/login', {}, {
-            query:  {method:'GET', isArray:true},
-            save:   {method:'POST', isArray:true},
-            update: {method:'PUT', isArray:true},
-            remove: {method:'DELETE', isArray:true}
+            'query' :   {method:'GET'     },
+            'save'  :   {method:'POST'    },
+            'update':   {method:'PUT'     },
+            'remove':   {method:'DELETE'  }
         });
     }]);
 
     app.service('logout', ['$resource', function($resource){
         return $resource('/logout', {}, {
-            query:  {method:'GET', isArray:true},
-            save:   {method:'POST', isArray:true},
-            update: {method:'PUT', isArray:true},
-            remove: {method:'DELETE', isArray:true}
+            'query' :   {method:'GET'     },
+            'save'  :   {method:'POST'    },
+            'update':   {method:'PUT'     },
+            'remove':   {method:'DELETE'  }
         });
     }]);
 
-    app.service('sales', ['$resource', function($resource){
-        return $resource('/sales', {}, {
-            query:  {method:'GET', isArray:true},
-            save:   {method:'POST', isArray:true},
-            update: {method:'PUT', isArray:true},
-            remove: {method:'DELETE', isArray:true}
+    app.service('Applications', ['$resource', function($resource){
+        return $resource('api/rest/applications', {}, {
+            'query' :   {method:'GET'     },
+            'save'  :   {method:'POST'    },
+            'update':   {method:'PUT'     },
+            'remove':   {method:'DELETE'  }
         });
     }]);
 
-    app.service('setting', ['$resource', function($resource){
-        return $resource('/settings', {}, {
-            query:  {method:'GET', isArray:true},
-            save:   {method:'POST', isArray:true},
-            update: {method:'PUT', isArray:true},
-            remove: {method:'DELETE', isArray:true}
+    app.service('Inquirers', ['$resource', function($resource){
+        return $resource('api/rest/inquirers', {}, {
+            'query' :   {method:'GET'     },
+            'save'  :   {method:'POST'    },
+            'update':   {method:'PUT'     },
+            'remove':   {method:'DELETE'  }
         });
     }]);
 
-    app.service('statistic', ['$resource', function($resource){
-        return $resource('/statistic', {}, {
-            query:  {method:'GET', isArray:true},
-            save:   {method:'POST', isArray:true},
-            update: {method:'PUT', isArray:true},
-            remove: {method:'DELETE', isArray:true}
+    app.service('Vendors', ['$resource', function($resource){
+        return $resource('api/rest/vendors', {}, {
+            'query' :   {method:'GET'     },
+            'save'  :   {method:'POST'    },
+            'update':   {method:'PUT'     },
+            'remove':   {method:'DELETE'  }
+        });
+    }]);
+
+    app.service('Containers', ['$resource', function($resource){
+        return $resource('api/rest/containers', {}, {
+            'query' :   {method:'GET'     },
+            'save'  :   {method:'POST'    },
+            'update':   {method:'PUT'     },
+            'remove':   {method:'DELETE'  }
+        });
+    }]);
+
+    app.service('Users', ['$resource', function($resource){
+        return $resource('api/rest/users', {}, {
+            'query' :   {method:'GET'     },
+            'save'  :   {method:'POST'    },
+            'update':   {method:'PUT'     },
+            'remove':   {method:'DELETE'  }
         });
     }]);

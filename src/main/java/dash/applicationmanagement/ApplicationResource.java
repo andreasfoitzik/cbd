@@ -21,7 +21,7 @@ import java.util.List;
  * Created by Andreas on 12.10.2015.
  */
 @RestController
-@RequestMapping(value="/application")
+@RequestMapping(value="api/rest/applications")
 @Api(value = "applications", description = "Application API")
 public class ApplicationResource {
 

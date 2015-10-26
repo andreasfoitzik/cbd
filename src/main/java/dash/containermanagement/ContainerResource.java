@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Component
 @RestController
-@RequestMapping(value="/container")
+@RequestMapping(value="api/rest/containers")
 @Api(value = "containers", description = "Container API")
 public class ContainerResource {
 

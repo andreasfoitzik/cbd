@@ -3,7 +3,10 @@
 angular.module('app.dashboard', ['ngResource'])
     .controller('DashboardCtrl', DashboardCtrl);
 
-function DashboardCtrl() {
+function DashboardCtrl(Applications) {
+
+    var application = Applications.query();
+    console.log(application);
   this.space                      = "7";
   this.application_amount         = "50";
   this.application_amount_follow  = "20";

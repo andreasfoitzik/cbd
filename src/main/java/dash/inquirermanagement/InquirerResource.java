@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 
 @RestController
-@RequestMapping(value="/inquirer")
+@RequestMapping(value="api/rest/inquirers")
 @Api(value = "inquirers", description = "Inquirer API")
 public class InquirerResource {
 
