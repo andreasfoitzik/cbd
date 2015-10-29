@@ -45,7 +45,7 @@
 
 <!-- Quick Overview - row - START -->
 <br/>
-<div ng-controller="DashboardCtrl as kpi">
+<div ng-controller="DashboardCtrl as dashboard">
     <div class="row">
         <div class="col-lg-2 col-md-6">
             <div class="panel panel-info">
@@ -55,12 +55,12 @@
                             <i class="fa fa-calendar-o fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="content"> &nbsp; {{ kpi.space }}</div>
+                            <div class="content"> &nbsp; {{ dashboard.space }}</div>
                         </div>
                     </div>
                 </div>
                 <div class="panel-footer">
-                     <select ng-init="kpi.space = 'heute'" ng-options="zeiten for zeiten in ['heute', '7 T', '30 T', 'alle']" class="form-control selectpicker" ng-change="kpi.changeSpace(kpi.space)" ng-model="kpi.space">
+                     <select ng-init="dashboard.space = 'heute'" ng-options="zeiten for zeiten in ['heute', '7 T', '30 T', 'alle']" class="form-control selectpicker" ng-change="dashboard.changeSpace(dashboard.space)" ng-model="dashboard.space">
                     </select>
                 </div>
             </div>
@@ -73,17 +73,17 @@
                             <i class="fa fa-comments fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">{{kpi.application_amount}}</div>
+                            <div class="huge">{{dashboard.application_amount}}</div>
                             <div>Anfragen</div>
                         </div>
                     </div>
                 </div>
                 <div class="panel-footer">
                     <span class="pull-left">
-                        <label class="control-label">bearbeitet </label> <span class="badge">{{kpi.application_amount_follow}}</span>
+                        <label class="control-label">bearbeitet </label> <span class="badge">{{dashboard.application_amount_follow}}</span>
                     </span>
                     <span class="pull-right">
-                        <label class="control-label">unbearbeitet </label> <span class="badge">{{kpi.application_amount_open}}</span>
+                        <label class="control-label">unbearbeitet </label> <span class="badge">{{dashboard.application_amount_open}}</span>
                     </span>
                     <div class="clearfix"></div>
                 </div>
@@ -97,17 +97,17 @@
                             <i class="fa fa-usd fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">{{ kpi.profit }}</div>
+                            <div class="huge">{{ dashboard.profit }}</div>
                             <div>Gewinn</div>
                         </div>
                     </div>
                 </div>
                 <div class="panel-footer panel-green">
                     <span class="pull-left">
-                        <label class="control-label">Umsatz </label> <span class="badge">{{ kpi.revenue }} € </span>
+                        <label class="control-label">Umsatz </label> <span class="badge">{{ dashboard.revenue }} € </span>
                     </span>
                     <span class="pull-right">
-                        <label class="control-label">Gewinn </label> <span class="badge">{{ kpi.profit  }} € </span>
+                        <label class="control-label">Gewinn </label> <span class="badge">{{ dashboard.profit  }} € </span>
                     </span>
                     <div class="clearfix"></div>
                 </div>
@@ -121,14 +121,14 @@
                             <i class="fa fa-area-chart fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">{{ kpi.convertionrate}}%</div>
+                            <div class="huge">{{ dashboard.convertionrate}}%</div>
                             <div>Conversion Rate &nbsp;&nbsp;</div>
                         </div>
                     </div>
                 </div>
                 <div class="panel-footer">
                     <span class="pull-left">
-                        <label class="control-label">Conversion Rate &nbsp;&nbsp; </label> <span class="badge">{{ kpi.convertionrate }} %</span>
+                        <label class="control-label">Conversion Rate &nbsp;&nbsp; </label> <span class="badge">{{ dashboard.convertionrate }} %</span>
                     </span>
                     <div class="clearfix"></div>
                 </div>
@@ -148,19 +148,20 @@
         })
     </script>
 
+<!-- Applications -->
     <div role="tabpanel">
 
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active">
                 <a data-target="#open" aria-controls="open" role="tab" data-toggle="tab">
                     Offene Anfragen
-                    <span class="badge">{{ kpi.application_amout_open }}</span>
+                    <span class="badge">{{ dashboard.application_amout_open }}</span>
                 </a>
             </li>
             <li role="presentation">
                 <a data-target="#follow" aria-controls="follow" role="tab" data-toggle="tab">
                     Follow up
-                    <span class="badge">{{ kpi.application_amount_follow }}</span>
+                    <span class="badge">{{ dashboard.application_amount_follow }}</span>
                 </a>
             </li>
         </ul>
@@ -169,7 +170,7 @@
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="open">
 
-            <!-- offene Anfragen -->
+            <!-- Application state OPEN -->
 
                 <br/>
                 <br/>
@@ -186,10 +187,10 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="application in $data">
-                        <td  data-title="'Name'" sortable="'name'">{{ application.name }}</td>
-                        <td  data-title="'Email'" sortable="'email'">{{ application.email }}</td>
-                        <td  data-title="'Bedarf'" sortable="'bedarf'">{{ application.bedarf }}</td>
+                    <tr ng-repeat="application in dashboard.applicationsStateOPEN">
+                        <td  data-title="'Name'" sortable="'name'">{{ application.inquirer.firstname }} {{ application.inquirer.lastname }}</td>
+                        <td  data-title="'Email'" sortable="'email'">{{ application.inquirer.email }}</td>
+                        <td  data-title="'Bedarf'" sortable="'bedarf'">{{ application.message }}</td>
                         <td  data-title="'Eingangsdatum'" sortable="'eingangsdatum'">{{ application.eingangsdatum }}</td>
                         <td  data-title="'Bearbeiter'" sortable="'bearbeiter'">{{ application.bearbeiter }}</td>
                         <td style="width:150px;">
@@ -213,12 +214,12 @@
                         </td>
                     </tr>
                 </table>
-                <!-- offene Anfragen -->
+                <!-- Application state OPEN -->
 
             </div>
             <div role="tabpanel" class="tab-pane" id="follow">
 
-                <!-- follow up -->
+                <!-- Application state FOLLOW -->
 
                 <br/>
                 <br/>
@@ -235,7 +236,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="application in $data">
+                    <tr ng-repeat="application in $applicationStateFOLLOW">
                         <td data-title="'Name'" sortable="'name'">{{ application.name }}</td>
                         <td data-title="'Email'" sortable="'email'">{{ application.email }}</td>
                         <td data-title="'Bedarf'" sortable="'bedarf'">{{ application.bedarf }}</td>
@@ -258,7 +259,7 @@
                         </td>
                     </tr>
                 </table>
-                <!-- follow up -->
+                <!-- Application state FOLLOW -->
 
             </div>
         </div>

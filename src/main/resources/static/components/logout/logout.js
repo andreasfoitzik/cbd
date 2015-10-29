@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('app.logout', ['ngResource'])
-    .controller('LogoutCtrl', LogoutCtrl);
+angular.module('app.logout', ['ngResource']).controller('LogoutCtrl', LogoutCtrl);
 
 function LogoutCtrl() {
   this.name = "John Smith";

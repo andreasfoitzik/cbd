@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('app.login', ['ngResource'])
-    .controller('LoginCtrl', LoginCtrl);
+angular.module('app.login', ['ngResource']).controller('LoginCtrl', LoginCtrl);
 
 function LoginCtrl() {
 }

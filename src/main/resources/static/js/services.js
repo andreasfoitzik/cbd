@@ -3,67 +3,41 @@
  */
 'use strict';
 
-angular.module('app.services', ['ngResource']);
-
-    app.service('login', ['$resource', function($resource){
-        return $resource('/login', {}, {
-            'query' :   {method:'GET'     },
-            'save'  :   {method:'POST'    },
-            'update':   {method:'PUT'     },
-            'remove':   {method:'DELETE'  }
+angular.module('app.services', ['ngResource'])
+    .service('login', ['$resource', function($resource){
+        return $resource('/login', {});
+    }])
+    .service('logout', ['$resource', function($resource){
+        return $resource('/logout', {});
+    }])
+    .service('Applications', ['$resource', function($resource){
+        return $resource('/api/rest/applications/:id', {id: '@id'}, {
+            'stateOPEN': {
+                method: 'GET',
+                url: '/api/rest/applications/state/OPEN',
+                isArray: true
+            },
+            'stateFOLLOW': {
+                method: 'GET',
+                url: '/api/rest/applications/state/FOLLOW',
+                isArray: true
+            },
+            'stateCLOSED': {
+                method: 'GET',
+                url: '/api/rest/applications/state/CLOSED',
+                isArray: true
+            }
         });
-    }]);
-
-    app.service('logout', ['$resource', function($resource){
-        return $resource('/logout', {}, {
-            'query' :   {method:'GET'     },
-            'save'  :   {method:'POST'    },
-            'update':   {method:'PUT'     },
-            'remove':   {method:'DELETE'  }
-        });
-    }]);
-
-    app.service('Applications', ['$resource', function($resource){
-        return $resource('api/rest/applications', {}, {
-            'query' :   {method:'GET'     },
-            'save'  :   {method:'POST'    },
-            'update':   {method:'PUT'     },
-            'remove':   {method:'DELETE'  }
-        });
-    }]);
-
-    app.service('Inquirers', ['$resource', function($resource){
-        return $resource('api/rest/inquirers', {}, {
-            'query' :   {method:'GET'     },
-            'save'  :   {method:'POST'    },
-            'update':   {method:'PUT'     },
-            'remove':   {method:'DELETE'  }
-        });
-    }]);
-
-    app.service('Vendors', ['$resource', function($resource){
-        return $resource('api/rest/vendors', {}, {
-            'query' :   {method:'GET'     },
-            'save'  :   {method:'POST'    },
-            'update':   {method:'PUT'     },
-            'remove':   {method:'DELETE'  }
-        });
-    }]);
-
-    app.service('Containers', ['$resource', function($resource){
-        return $resource('api/rest/containers', {}, {
-            'query' :   {method:'GET'     },
-            'save'  :   {method:'POST'    },
-            'update':   {method:'PUT'     },
-            'remove':   {method:'DELETE'  }
-        });
-    }]);
-
-    app.service('Users', ['$resource', function($resource){
-        return $resource('api/rest/users', {}, {
-            'query' :   {method:'GET'     },
-            'save'  :   {method:'POST'    },
-            'update':   {method:'PUT'     },
-            'remove':   {method:'DELETE'  }
-        });
+    }])
+    .service('Inquirers', ['$resource', function($resource){
+        return $resource('api/rest/inquirers/:id', {id: '@id'});
+    }])
+    .service('Vendors', ['$resource', function($resource){
+        return $resource('api/rest/vendors/:id', {id: '@id'});
+    }])
+    .service('Containers', ['$resource', function($resource){
+        return $resource('api/rest/containers/:id', {id: '@id'});
+    }])
+    .service('Users', ['$resource', function($resource){
+        return $resource('api/rest/users/:id', {id: '@id'});
     }]);

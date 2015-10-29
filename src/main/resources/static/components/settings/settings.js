@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('app.settings', ['ngResource'])
-    .controller('SettingsCtrl', SettingsCtrl);
+angular.module('app.settings', ['ngResource']).controller('SettingsCtrl', SettingsCtrl);
 
 function SettingsCtrl() {
   this.name = "John Smith";

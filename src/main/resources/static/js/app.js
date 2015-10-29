@@ -19,6 +19,7 @@ angular.module('app', [
     .controller('AppController', ['$router', AppController]);
 
 function AppController($router) {
+
     $router.config([
         { path: "/dashboard",               component: "dashboard"      },
         { path: "/data",                    component: "data"           },

@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('app.sales', ['ngResource'])
-    .controller('SalesCtrl', SalesCtrl);
+angular.module('app.sales', ['ngResource']).controller('SalesCtrl', SalesCtrl);
 
 function SalesCtrl() {
   this.name = "John Smith";

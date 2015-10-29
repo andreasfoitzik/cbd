@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('app.statistiken', ['ngResource'])
-    .controller('StatistikenCtrl', StatistikenCtrl);
+angular.module('app.statistiken', ['ngResource']).controller('StatistikenCtrl', StatistikenCtrl);
 
 function StatistikenCtrl() {
   this.name = "John Smith";

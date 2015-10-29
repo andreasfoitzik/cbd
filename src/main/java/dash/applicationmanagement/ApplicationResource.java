@@ -2,6 +2,7 @@ package dash.applicationmanagement;
 
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
+import dash.Status;
 import dash.applicationmanagement.Application;
 import dash.containermanagement.Container;
 import dash.containermanagement.ContainerRepository;
@@ -44,7 +45,14 @@ public class ApplicationResource {
     }
 
     @RequestMapping(method = RequestMethod.GET,
-            value="{id}")
+                    value="state/{status}")
+    @ResponseStatus(HttpStatus.OK)
+    public Iterable<Application> get(@PathVariable Status status) {
+        return applicationRepository.findApplicationsByStatus(status);
+    }
+
+    @RequestMapping(method = RequestMethod.GET,
+                    value="{id}")
     @ResponseStatus(HttpStatus.OK)
     public Application findById(@PathVariable Long id) {
         return applicationRepository.findOne(id);

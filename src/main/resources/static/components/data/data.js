@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('app.data', ['ngResource'])
-    .controller('DataCtrl', DataCtrl);
+angular.module('app.data', ['ngResource']).controller('DataCtrl', DataCtrl);
 
 function DataCtrl() {
   this.applications = [
