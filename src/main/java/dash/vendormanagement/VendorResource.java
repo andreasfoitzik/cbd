@@ -1,7 +1,7 @@
 package dash.vendormanagement;
 
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import dash.usermanagement.User;
 import dash.usermanagement.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -14,4 +14,7 @@ import org.springframework.stereotype.Repository;
 public interface ApplicationRepository extends CrudRepository<Application, Long> {
 
     public Iterable<Application> findApplicationsByStatus(@Param("status") Status status);
+
+    public Iterable<Application> findApplicationByMessage(@Param("message") String message);
+
 }

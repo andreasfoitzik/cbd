@@ -155,7 +155,7 @@
             <li role="presentation" class="active">
                 <a data-target="#open" aria-controls="open" role="tab" data-toggle="tab">
                     Offene Anfragen
-                    <span class="badge">{{ dashboard.application_amout_open }}</span>
+                    <span class="badge">{{ dashboard.application_amount_open }}</span>
                 </a>
             </li>
             <li role="presentation">
@@ -195,19 +195,19 @@
                         <td  data-title="'Bearbeiter'" sortable="'bearbeiter'">{{ application.bearbeiter }}</td>
                         <td style="width:150px;">
                             <div class="row">
-                                <button class="btn btn-warning" ng-click="edit(application._id)" data-toggle="modal" data-target="#editApplication">
+                                <button class="btn btn-warning" ng-click="dashboard.edit(application._id)" data-toggle="modal" data-target="#editApplication">
                                     <i class="fa fa-pencil-square-o"></i>
                                 </button>
 
-                                <button class="btn btn-success" type="button" title="Angebot gesendet" ng-click="situation(application._id, 'angebot_gesendet')">
+                                <button class="btn btn-success" type="button" title="Angebot gesendet" ng-click="dashboard.situation(application._id, 'angebot_gesendet')">
                                     <i class="fa fa-paper-plane-o"></i>
                                 </button>
 
-                                <button class="btn btn-info" type="button" title="In Kontakt" ng-click="situation(application._id, 'in_kontakt')">
+                                <button class="btn btn-info" type="button" title="In Kontakt" ng-click="dashboard.situation(application._id, 'in_kontakt')">
                                     <i class="fa fa-check"></i>
                                 </button>
 
-                                <button class="btn btn-danger" type="button" title="Trash" ng-click="remove(application._id)">
+                                <button class="btn btn-danger" type="button" title="Trash" ng-click="dashboard.remove(application._id)">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </div>
@@ -270,13 +270,7 @@
 <br/>
 <br/>
 <br/>
-
-
-
-
 <br/>
-
-
 
 <!-- Modal -->
 

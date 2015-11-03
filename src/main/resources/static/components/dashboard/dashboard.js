@@ -3,6 +3,7 @@
 angular.module('app.dashboard', ['ngResource']);
 
 angular.module('app.dashboard').controller('DashboardCtrl', DashboardCtrl);
+
 DashboardCtrl.$inject = ["Applications"];
 
 function DashboardCtrl(Applications) {
@@ -59,7 +60,17 @@ function DashboardCtrl(Applications) {
     this.profit                     = "10.000";
     this.revenue                    = "100.000";
     this.convertionrate             = "10";
+
+    this.edit = function(applicationId) {
+        console.log("Application ID: ", applicationId);
+
+        var application = Applications.get({id: applicationId}, function(){
+            console.log(test);
+        });
+    };
 }
+
+
 
 DashboardCtrl.prototype.changeSpace = function(space) {
   alert(space);

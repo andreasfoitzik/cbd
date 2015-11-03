@@ -21,12 +21,13 @@ public class Inquirer {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
+
     private String firstname;
     private String lastname;
     private String company;
     private String email;
 
-    protected Inquirer(){}
+    public Inquirer(){}
 
     public Long getId() { return id; }
 

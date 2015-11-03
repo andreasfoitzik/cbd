@@ -1,14 +1,16 @@
 package dash.applicationmanagement;
 
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
+
 import dash.Status;
 import dash.applicationmanagement.Application;
 import dash.containermanagement.Container;
 import dash.containermanagement.ContainerRepository;
 import dash.inquirermanagement.InquirerRepository;
 import dash.vendormanagement.VendorRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -56,6 +58,10 @@ public class ApplicationResource {
     @ResponseStatus(HttpStatus.OK)
     public Application findById(@PathVariable Long id) {
         return applicationRepository.findOne(id);
+    }
+
+    public Iterable<Application> findApplicationByMessage(@Param("message") String message){
+        return applicationRepository.findApplicationByMessage(message);
     }
 
     @RequestMapping(method = RequestMethod.POST,

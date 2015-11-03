@@ -1,7 +1,7 @@
 package dash.containermanagement;
 
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import dash.vendormanagement.Vendor;
 import dash.vendormanagement.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,6 @@ public class ContainerResource {
                 produces = {MediaType.APPLICATION_JSON_VALUE})
         @ResponseStatus(HttpStatus.CREATED)
         public ResponseEntity<Void> add(@RequestBody Container container) {
-                System.out.println(container);
                 containerRepository.save(container);
                 return new ResponseEntity<Void>(HttpStatus.OK);
         }

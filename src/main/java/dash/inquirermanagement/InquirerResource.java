@@ -1,7 +1,7 @@
 package dash.inquirermanagement;
 
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -42,7 +42,6 @@ public class InquirerResource {
         @ResponseStatus(HttpStatus.CREATED)
         @ApiOperation(value = "Create a Inquirer Entity.", notes = "Returns the URL of the new resource in the Location header.")
         public ResponseEntity<Void> add(@RequestBody Inquirer inquirer) {
-                System.out.println(inquirer);
                 inquirerRepository.save(inquirer);
                 return new ResponseEntity<Void>(HttpStatus.OK);
         }
