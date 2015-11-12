@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-@RequestMapping(value="api/rest/vendors")
+@RequestMapping(value="/vendors")
 @Api(value = "vendors", description = "Vendor API")
 public class VendorResource {
 

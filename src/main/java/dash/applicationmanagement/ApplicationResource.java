@@ -1,11 +1,13 @@
 package dash.applicationmanagement;
 
 
-import dash.Status;
+import dash.applicationmanagement.Application.Status;
 import dash.applicationmanagement.Application;
 import dash.containermanagement.Container;
 import dash.containermanagement.ContainerRepository;
+import dash.inquirermanagement.Inquirer;
 import dash.inquirermanagement.InquirerRepository;
+import dash.vendormanagement.Vendor;
 import dash.vendormanagement.VendorRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,7 +26,7 @@ import java.util.List;
  * Created by Andreas on 12.10.2015.
  */
 @RestController
-@RequestMapping(value="api/rest/applications")
+@RequestMapping(value="/applications")
 @Api(value = "applications", description = "Application API")
 public class ApplicationResource {
 
@@ -42,9 +44,7 @@ public class ApplicationResource {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public Iterable<Application> get() {
-        return applicationRepository.findAll();
-    }
+    public Iterable<Application> get() { return applicationRepository.findAll(); }
 
     @RequestMapping(method = RequestMethod.GET,
                     value="state/{status}")
@@ -70,9 +70,14 @@ public class ApplicationResource {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Void> add(@RequestBody Application application) {
 
-        inquirerRepository.save(application.getInquirer());
-        vendorRepository.save(application.getVendor());
-        containerRepository.save(application.getContainer());
+       // List<Container> containers = new ArrayList<Container>();
+        //containers.add(new Container("Seecontainer", "Für hohe See geeignet", 30.00));
+
+        //Application neu = new Application( new Inquirer("Andreas", "Foitzik", "getnet", "andreas.foitzik@live.com"), new Vendor("Breuniger", "0839"),30, true, "Neuler", "yes", "Hallo Herr Ilg", Application.Status.OPEN);
+
+        //inquirerRepository.save(application.getInquirer());
+        //vendorRepository.save(application.getVendor());
+        //containerRepository.save(application.getContainer());
 
         applicationRepository.save(application);
         return new ResponseEntity<Void>(HttpStatus.OK);

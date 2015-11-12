@@ -4,13 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created by Andreas on 10.10.2015.
  */
 
 @Entity
-public class Vendor {
+public class Vendor implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -18,7 +19,12 @@ public class Vendor {
     private String name;
     private String phone;
 
-    protected Vendor(){}
+    public Vendor(){}
+
+    public Vendor(String name, String phone){
+        this.name = name;
+        this.phone = phone;
+    }
 
     public Long getId(){
         return id;

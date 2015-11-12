@@ -1,11 +1,14 @@
 package dash.applicationmanagement;
 
-import dash.Status;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import dash.containermanagement.Container;
 import dash.inquirermanagement.Inquirer;
 import dash.vendormanagement.Vendor;
+import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.net.URI;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,27 +18,38 @@ import java.util.List;
  * Created by Andreas on 09.10.2015.
  */
 @Entity
-public class Application {
+public class Application implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private long id;
+    public long id;
 
-    @OneToOne
-    private Inquirer inquirer;
-    @OneToOne
-    private Vendor vendor;
-    @OneToMany
-    private List<Container> container;
+    @OneToOne(cascade = CascadeType.ALL)
+    public Inquirer inquirer;
 
-    private String containerAmount;
-    private boolean transport;
-    private String destination;
-    private String compareableProposal;
-    private String message;
-    private Status status;
+    @OneToOne(cascade = CascadeType.ALL)
+    public Vendor vendor;
+
+    public int containerAmount;
+    public boolean transport;
+    public String destination;
+    public String compareableProposal;
+    public String message;
+    public Status status;
 
     protected Application(){}
+
+    public Application(Inquirer inquirer, Vendor vendor, int containerAmount, boolean transport, String destination, String compareableProposal, String message, Status status){
+        this.inquirer = inquirer;
+        this.vendor = vendor;
+        this.containerAmount = containerAmount;
+        this.transport = transport;
+        this.destination = destination;
+        this.compareableProposal = compareableProposal;
+        this.message = message;
+        this.status = status;
+    }
+
 
     public Inquirer getInquirer() {
         return inquirer;
@@ -53,19 +67,11 @@ public class Application {
         this.vendor = vendor;
     }
 
-    public List<Container> getContainer() {
-        return container;
-    }
-
-    public void setContainer(List<Container> container) {
-        this.container = container;
-    }
-
-    public String getContainerAmount() {
+    public int getContainerAmount() {
         return containerAmount;
     }
 
-    public void setContainerAmount(String containerAmount) {
+    public void setContainerAmount(int containerAmount) {
         this.containerAmount = containerAmount;
     }
 
@@ -107,5 +113,9 @@ public class Application {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    static enum Status {
+        OPEN, FOLLOW, CLOSED
     }
 }

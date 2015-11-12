@@ -4,12 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created by Andreas on 10.10.2015.
  */
 @Entity
-public class Container {
+public class Container implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -19,6 +20,12 @@ public class Container {
     private double price;
 
     protected Container(){}
+
+    public Container(String name, String description, double price){
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
 
     public long getId(){
         return id;

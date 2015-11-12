@@ -11,12 +11,13 @@ import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
 /**
  * Created by Andreas on 10.10.2015.
  */
 @Entity
-public class Inquirer {
+public class Inquirer implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -28,6 +29,13 @@ public class Inquirer {
     private String email;
 
     public Inquirer(){}
+
+    public Inquirer(String firstname, String lastname, String company, String email){
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.company = company;
+        this.email = email;
+    }
 
     public Long getId() { return id; }
 

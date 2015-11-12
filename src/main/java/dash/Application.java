@@ -2,9 +2,13 @@ package dash;
 
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
@@ -23,7 +27,9 @@ import static springfox.documentation.builders.PathSelectors.*;
 
 @SpringBootApplication
 @EnableSwagger2 //Enable swagger 2.0 spec
-
+@EnableJpaRepositories
+@Import(RepositoryRestMvcConfiguration.class)
+@EnableAutoConfiguration
 public class Application {
 
     public static void main(String[] args) {

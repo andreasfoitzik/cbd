@@ -14,14 +14,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 
 @RestController
-@RequestMapping(value="api/rest/inquirers")
+@RequestMapping(value="/inquirers")
 @Api(value = "inquirers", description = "Inquirer API")
 public class InquirerResource {
 
         @Autowired
         private InquirerRepository inquirerRepository;
 
-        @RequestMapping(method = RequestMethod.GET)
+        @RequestMapping(method = RequestMethod.GET,
+                        produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
         @ResponseStatus(HttpStatus.OK)
         @ApiOperation(value = "Get all Inquirers", notes = "You have to provide a valid hotel ID.")
         public Iterable<Inquirer> get() {
@@ -67,5 +68,6 @@ public class InquirerResource {
         public void delete(@PathVariable Long id) {
                 inquirerRepository.delete(id);
         }
+
 }
 
