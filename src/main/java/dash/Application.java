@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
+import org.springframework.hateoas.config.EnableHypermediaSupport;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
@@ -28,8 +29,6 @@ import static springfox.documentation.builders.PathSelectors.*;
 @SpringBootApplication
 @EnableSwagger2 //Enable swagger 2.0 spec
 @EnableJpaRepositories
-@Import(RepositoryRestMvcConfiguration.class)
-@EnableAutoConfiguration
 public class Application {
 
     public static void main(String[] args) {

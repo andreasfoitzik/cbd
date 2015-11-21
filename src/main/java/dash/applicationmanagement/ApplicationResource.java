@@ -1,7 +1,7 @@
 package dash.applicationmanagement;
 
 
-import dash.applicationmanagement.Application.Status;
+import dash.Status;
 import dash.applicationmanagement.Application;
 import dash.containermanagement.Container;
 import dash.containermanagement.ContainerRepository;
@@ -13,6 +13,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,7 @@ import java.util.List;
  * Created by Andreas on 12.10.2015.
  */
 @RestController
+@ExposesResourceFor(Application.class)
 @RequestMapping(value="/applications")
 @Api(value = "applications", description = "Application API")
 public class ApplicationResource {
@@ -70,13 +72,17 @@ public class ApplicationResource {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Void> add(@RequestBody Application application) {
 
-       // List<Container> containers = new ArrayList<Container>();
+        //List<Container> containers = new ArrayList<Container>();
         //containers.add(new Container("Seecontainer", "Für hohe See geeignet", 30.00));
 
-        //Application neu = new Application( new Inquirer("Andreas", "Foitzik", "getnet", "andreas.foitzik@live.com"), new Vendor("Breuniger", "0839"),30, true, "Neuler", "yes", "Hallo Herr Ilg", Application.Status.OPEN);
+        //Application neu = new Application( new Inquirer("Andreas", "Foitzik", "getnet", "andreas.foitzik@live.com"), new Vendor("Breuniger", "0839"),30, true, "Neuler", "yes", "Hallo Herr Ilg", Status.OPEN);
 
-        //inquirerRepository.save(application.getInquirer());
-        //vendorRepository.save(application.getVendor());
+        //Inquirer in = new Inquirer("Andreas", "Foitzik", "getnet", "andreas.foitzik@live.com");
+        //inquirerRepository.save(in);
+
+        inquirerRepository.save(application.getInquirer());
+
+        vendorRepository.save(application.getVendor());
         //containerRepository.save(application.getContainer());
 
         applicationRepository.save(application);

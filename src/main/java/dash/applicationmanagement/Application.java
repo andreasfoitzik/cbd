@@ -1,18 +1,14 @@
 package dash.applicationmanagement;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import dash.containermanagement.Container;
+import com.fasterxml.jackson.annotation.*;
+import dash.Status;
 import dash.inquirermanagement.Inquirer;
 import dash.vendormanagement.Vendor;
-import org.hibernate.annotations.NaturalId;
+import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
+
 import java.io.Serializable;
-import java.net.URI;
-import java.text.Format;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Andreas on 09.10.2015.
@@ -21,13 +17,21 @@ import java.util.List;
 public class Application implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue
     public long id;
 
+    @JsonProperty(value = "Inquirer")
+    @JsonView
+    // @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+   // @JsonIdentityReference(alwaysAsId = true)
     @OneToOne(cascade = CascadeType.ALL)
+   // @JoinColumn(name = "inquirer")
     public Inquirer inquirer;
 
+    @JsonProperty(value = "Vendor")
+    @JsonView
     @OneToOne(cascade = CascadeType.ALL)
+   // @JoinColumn(name = "vendor")
     public Vendor vendor;
 
     public int containerAmount;
@@ -50,6 +54,7 @@ public class Application implements Serializable {
         this.status = status;
     }
 
+    public Long getId() { return id; }
 
     public Inquirer getInquirer() {
         return inquirer;
@@ -115,7 +120,4 @@ public class Application implements Serializable {
         this.status = status;
     }
 
-    static enum Status {
-        OPEN, FOLLOW, CLOSED
-    }
 }

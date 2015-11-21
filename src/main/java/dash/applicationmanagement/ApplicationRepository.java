@@ -1,13 +1,8 @@
 package dash.applicationmanagement;
 
-import dash.applicationmanagement.Application.Status;
-import dash.inquirermanagement.Inquirer;
-import dash.usermanagement.User;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import dash.Status;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,7 +10,7 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface ApplicationRepository extends CrudRepository<Application, Long> {
+public interface ApplicationRepository extends JpaRepository<Application, Long> {
 
     public Iterable<Application> findApplicationsByStatus(@Param("status") Status status);
 

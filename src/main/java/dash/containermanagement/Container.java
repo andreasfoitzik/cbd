@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class Container implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue
     private long id;
     private String name;
     private String description;
@@ -27,9 +27,7 @@ public class Container implements Serializable {
         this.price = price;
     }
 
-    public long getId(){
-        return id;
-    }
+    public Long getId () {return id; }
 
     public String getName() {
         return name;

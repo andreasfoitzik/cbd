@@ -2,6 +2,7 @@ package dash.inquirermanagement;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ import java.io.Serializable;
 public class Inquirer implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue
     private long id;
 
     private String firstname;

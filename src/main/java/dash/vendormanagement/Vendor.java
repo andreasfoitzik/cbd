@@ -1,5 +1,7 @@
 package dash.vendormanagement;
 
+import org.springframework.hateoas.ResourceSupport;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +16,7 @@ import java.io.Serializable;
 public class Vendor implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
     private String name;
     private String phone;
@@ -26,9 +28,7 @@ public class Vendor implements Serializable {
         this.phone = phone;
     }
 
-    public Long getId(){
-        return id;
-    }
+    public Long getId() { return id; }
 
     public String getPhone() {
         return phone;

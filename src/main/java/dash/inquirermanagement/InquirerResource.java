@@ -22,7 +22,7 @@ public class InquirerResource {
         private InquirerRepository inquirerRepository;
 
         @RequestMapping(method = RequestMethod.GET,
-                        produces = {MediaType.APPLICATION_JSON_VALUE, "application/hal+json"})
+                        produces = {MediaType.APPLICATION_JSON_VALUE})
         @ResponseStatus(HttpStatus.OK)
         @ApiOperation(value = "Get all Inquirers", notes = "You have to provide a valid hotel ID.")
         public Iterable<Inquirer> get() {

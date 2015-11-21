@@ -8,15 +8,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created by Andreas on 09.10.2015.
  */
 @Entity
-public class User {
+public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue
     private long id;
     private String firstname;
     private String lastname;
@@ -24,6 +25,8 @@ public class User {
     private String email;
 
     protected User (){}
+
+    public Long getId(){ return id; }
 
     public String getFirstname() {
         return firstname;
